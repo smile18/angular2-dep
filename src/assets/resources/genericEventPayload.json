@@ -1,0 +1,224 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The first version of DEEP.io Event Producer API. This API is to POST Events to the Producer. This has only POST operation.",
+    "version": "1",
+    "title": "DEEP.io Event Producer API"
+  },
+  "host": "localhost:8090",
+  "basePath": "/eventProducer/V0.0.1/api-docs",
+  "tags": [{
+    "name": "messages-api-controller",
+    "description": "the messages API"
+  }],
+  "paths": {
+    "/messages/{eventType}": {
+      "post": {
+        "tags": [
+          "post event"
+        ],
+        "summary": "createEvent",
+        "operationId": "createEventUsingPOSTUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "eventType",
+          "in": "path",
+          "description": "event type is must",
+          "required": true,
+          "type": "string"
+        }, {
+          "in": "body",
+          "name": "event",
+          "description": "event model",
+          "required": false,
+          "schema": {
+            "$ref": "#/definitions/Event"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "no description"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "HeaderReference": {
+      "type": "object",
+      "required": [
+        "activityId"
+      ],
+      "properties": {
+        "activityId": {
+          "type": "string",
+          "description": "activityid"
+        },
+        "applicationId": {
+          "type": "string",
+          "description": "Identifies the application, system, or tool that is being used to perform the transaction(s) related to this request."
+        },
+        "applicationUserId": {
+          "type": "string",
+          "description": "Application user identification"
+        },
+        "applicationuserId": {
+          "type": "string",
+          "description": "applicationuserid"
+        },
+        "authcustomerId": {
+          "type": "string",
+          "description": "authcustomerid"
+        },
+        "authfinancialaccountId": {
+          "type": "string",
+          "description": "authfinancialaccountid"
+        },
+        "authlineofserviceId": {
+          "type": "string",
+          "description": "authlineofserviceid"
+        },
+        "channelId": {
+          "type": "string",
+          "description": "Identifies the business unit or sales channel."
+        },
+        "dealerCode": {
+          "type": "string",
+          "description": "Uniquely identifies the dealer."
+        },
+        "interactionId": {
+          "type": "string",
+          "description": "interactionid"
+        },
+        "masterDealerCode": {
+          "type": "string",
+          "description": "Code that uniquely identifies the master dealer for a large retail partner, such as Apple or Costco."
+        },
+        "segmentationId": {
+          "type": "string",
+          "description": "segmentationid"
+        },
+        "senderId": {
+          "type": "string",
+          "description": "Uniquely identifies the sender."
+        },
+        "sessionId": {
+          "type": "string",
+          "description": "sessionid"
+        },
+        "storeId": {
+          "type": "string",
+          "description": "Unique identifier for the store."
+        },
+        "terminalId": {
+          "type": "string",
+          "description": "terminalid"
+        },
+        "tillId": {
+          "type": "string",
+          "description": "tillid"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "timestamp"
+        },
+        "workflowId": {
+          "type": "string",
+          "description": "workflowid"
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "required": [
+        "eventProducerId",
+        "eventTime"
+      ],
+      "properties": {
+        "errorData": {
+          "$ref": "#/definitions/ErrorData"
+        },
+        "eventId": {
+          "type": "string",
+          "description": "the eventId is useful for developers to debug."
+        },
+        "eventProducerId": {
+          "type": "string"
+        },
+        "eventTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time that the event occurred."
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "eventVersion": {
+          "type": "string"
+        },
+        "headerReference": {
+          "$ref": "#/definitions/HeaderReference"
+        },
+        "orderId": {
+          "type": "string",
+          "description": "Enterprise-wide unique identifier for any order."
+        },
+        "payload": {
+          "$ref": "#/definitions/Payload"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "userMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "Payload": {
+      "type": "object",
+      "properties": {
+        "imei": {
+          "type": "string"
+        },
+        "orderNumber": {
+          "type": "string"
+        }
+      },
+      "description": "Event payload "
+    },
+    "ErrorData": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    }
+  }
+}

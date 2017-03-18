@@ -1,0 +1,49 @@
+<div class="ui-g">
+
+  <div class="ui-g-12">
+    <div class="ui-grid-col-12">
+      <div class={{messageDetails.severity}} *ngIf="showMessage" >
+        <span>{{messageDetails.summary}}</span>
+        <span>{{messageDetails.detail}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g-12" >
+    <button id="two" *ngIf="userRole=='admin'? true : userRole=='super-admin'"  pButton type="button" icon="fa fa-pencil-square-o" iconPos="left" label="Create Rules" class="ui-button-success" (click)="createRule()"></button>
+    <a *ngIf="userRole=='super-admin'" pButton type="button" icon="fa fa-refresh" iconPos="left" label="Refresh Rules" class="ui-button-success" (click)="refreshRules()"></a>
+  </div>
+
+  <div class="ui-g">
+
+    <p-dataTable [value]="deeprules" [rows]="25" [paginator]="true" sortMode="multiple"
+                 resizableColumns="true" columnResizeMode="expand" [selectionMode]="userRole=='user'? 'none' : 'single' " [(selection)]="selectedRule"
+                 [contextMenu]="cm">
+      <p-header>Decision Rules Table</p-header>
+      <p-column field="activity" header="Event Name" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="condition" header="Filter Condition" [sortable]="true"></p-column>
+      <p-column field="system" header="Consumer Name" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="compensatingFlow" header="Error handler" [sortable]="true"></p-column>
+      <p-column field="numberOfRetries" header="No.of Retries" [sortable]="true"></p-column>
+      <p-column field="retryDelay" header="Retry Delay(seconds)" [sortable]="true"></p-column>
+      <p-column field="createdBy" header="Created BY" [sortable]="true"></p-column>
+      <p-column field="messageQos" header="Message QOS" [sortable]="true" *ngIf="userRole=='super-admin'"></p-column>
+      <p-column header="" *ngIf="userRole=='admin'? true : userRole=='super-admin'">
+        <template pTemplate="body" let-selectedRule="rowData">
+          <div class="ui-g-6">
+            <i class="fa fa-cog" (click)="showMenu($event,selectedRule,op2)" style="font-size:24px"></i>
+          </div>
+        </template>
+      </p-column>
+    </p-dataTable>
+
+    <p-contextMenu #cm [model]="items" *ngIf="userRole=='admin'? true : userRole=='super-admin'"></p-contextMenu>
+
+    <p-confirmDialog width="425"></p-confirmDialog>
+
+    <p-overlayPanel #op2 [showCloseIcon]="true" [dismissable]="false">
+      <p-panelMenu [model]="items"></p-panelMenu>
+    </p-overlayPanel>
+
+  </div>
+</div>

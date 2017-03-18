@@ -1,0 +1,122 @@
+<div class="ui-g">
+  <div class="ui-grid-row">
+    <div class={{messageDetails.severity}} *ngIf="showMessage" >
+      <span>{{messageDetails.summary}}</span>
+      <span>{{messageDetails.detail}}</span></div>
+  </div>
+</div>
+<div class="ui-panel">
+  <p-panel>
+    <p-header class="ui-panel-titlebar">
+      Create New Event Rule
+    </p-header>
+
+    <div class="ui-panel-content">
+      <form [formGroup]="deepRuleForm" novalidate (ngSubmit)="createRules(deepRuleForm.value)">
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12" [ngClass]="{'has-error':!deepRuleForm.controls['activity'].valid && deepRuleForm.controls['activity'].touched}">
+            <div class="ui-grid-col-2"><label>Event Name </label></div>
+            <div class="ui-grid-col-8">
+              <input class="inputtext" type="text" formControlName="activity" placeholder="Event Activity"/>
+              <div *ngIf="deepRuleForm.controls['activity'].hasError('required') && deepRuleForm.controls['activity'].touched" class="alert alert-danger">You must enter Event Name.</div>
+              <div *ngIf="deepRuleForm.controls['activity'].hasError('minlength') && deepRuleForm.controls['activity'].touched" class="alert alert-danger">Event name must be at least 3 characters long.</div>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-2">
+              <label>Filter Condition </label>
+            </div>
+            <div class="ui-grid-col-8">
+              <input  class="inputtext" type="text" formControlName="condition" placeholder="Enter Condition" (keyup)="validateCondition(deepRuleForm.value.condition)">
+              <div *ngIf="jsonPathError" class="alert alert-danger">{{jsonPathError}}</div>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-2">
+              <label>Consumer Name </label>
+            </div>
+            <div class="ui-grid-col-8">
+              <input class="inputtext" type="text" formControlName="system" placeholder="Enter System">
+              <div *ngIf="deepRuleForm.controls['system'].hasError('required') && deepRuleForm.controls['activity'].touched" class="alert alert-danger">Please enter Consumer Name.</div>
+              <div *ngIf="deepRuleForm.controls['system'].hasError('minlength') && deepRuleForm.controls['activity'].touched" class="alert alert-danger">Consumer Name must be at least 8 characters long.</div>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-2">
+              <label>Error Handler </label>
+            </div>
+            <div class="ui-grid-col-8">
+              <input class="inputtext" type="text" formControlName="compensatingFlow" placeholder="Enter Compensation">
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-2">
+              <label>Number of Retries </label>
+            </div>
+            <div class="ui-grid-col-8">
+              <input class="inputtext" type="text" formControlName="numberOfRetries" placeholder="Enter Number Of Retries">
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-2">
+              <label>Retry Delay (ms)</label>
+            </div>
+            <div class="ui-grid-col-8">
+              <input class="inputtext" type="text" formControlName="retryDelay" placeholder="Enter Retry Delay">
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row" *ngIf="userRole=='super-admin'">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-2">
+              <label>Consumer Prefetch</label>
+            </div>
+            <div class="ui-grid-col-8">
+              <input class="inputtext" type="text" formControlName="messageQos" placeholder="Enter consumer prefetch">
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            <div class="ui-grid-col-4"><label></label></div>
+            <div class="ui-grid-col-8">
+              <button class="btn btn-primary" type="submit" (click)="createRules(deepRuleForm.value)" [disabled]="(!deepRuleForm.valid || isClicked) ">Create Rule</button>
+              <button class="btn btn-primary" type="submit" (click)="deepRuleForm.reset()" [disabled]="deepRuleForm.pristine">Reset Form</button>
+              <button class="btn btn-primary" type="submit" (click)="cancel()" >Cancel</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </p-panel>
+</div>
+
+
+

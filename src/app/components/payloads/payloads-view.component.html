@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="ui-g-12">
+    <div class={{messageDetails.severity}} *ngIf="isError" >
+      <span>{{messageDetails.summary}}</span>
+      <span>{{messageDetails.detail}}</span></div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-2">
+    <label>Filter by Event:</label>
+    <select class="inputselect" id="eventsSelect" (ngModelChange)="onChangeEventName($event)" [ngModel]="selectedEventName">
+      <option [value]="event" *ngFor="let event of eventNames">{{event}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="combinedPayload != null">
+    <span *ngIf="userRole=='user'? true : userRole=='admin'? true : userRole=='super-admin'">
+
+      <div class="col-md-2" id="deliveryModeDiv">
+        <label>Delivery Mode</label>
+        <select class="inputselect" id="deliveryMode" [(ngModel)]="eventPayload.deliveryMode">
+          <option *ngFor="let o of deliveryMode" [value]="o">{{o}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-2" id="confirmOnPublishDiv">
+        <label>Confirm On Publish</label>
+        <select class="inputselect" id="confirmOnPublish" [(ngModel)]="eventPayload.confirmOnPublish">
+          <option *ngFor="let o of confirmOnPublish" [value]="o">{{o}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-2" id="confirmationWaitTimeDiv">
+        <label>Confirmation WaitTime</label>
+        <input type="text" class="inputtext" id="confirmationWaitTime" [(ngModel)]="eventPayload.confirmationWaitTime"
+             style="width: 200px;" placeholder="Enter Confirmation WaitTime" required ng-minlength="5"/>
+      </div>
+    </span>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-12 view-payload">
+          <textarea [readonly]="userRole=='user'? true : false" [ngModel]="combinedPayload" spellcheck="false" autoResize="autoResize" (keyup)="onChangePayloadData($event)"> </textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ui-g-12">
+        <div class={{messageDetails.severity}} *ngIf="showMessage" >
+          <span>{{messageDetails.summary}}</span>
+          <span>{{messageDetails.detail}}</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <span>
+              <input type="button" value="Download Payload" class="btn btn-primary" (click)="downloadPayload(selectedEventName, combinedPayload)"/></span>
+          <span *ngIf="userRole=='admin'? true : userRole=='super-admin'" >
+              <input type="button" value="Update" class="btn btn-primary" (click)="updatePayload(combinedPayload)" [disabled]="showMessage"/>
+          </span>
+          <span *ngIf="userRole=='admin'? true : userRole=='super-admin'">
+              <input type="button" value="Delete" class="btn btn-primary" (click)="deletePayload(selectedEventName)"/>
+          </span>
+        </div>
+        <div class="col-md-6">
+                <span >
+                  <a href="{{ swaggerEditorUrl }}" target="_blank" class="btn btn-primary"> Swagger Editor Link</a>
+                </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

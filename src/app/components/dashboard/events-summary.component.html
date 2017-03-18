@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-2">
+    <label>Filter by Environment</label>
+    <select class="inputselect" id="eventsSelect" (ngModelChange)="onChangeEventName($event)" [ngModel]="selectedEventName">
+      <option [value]="event" *ngFor="let event of eventNames">{{event}}</option>
+    </select>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-12 view-payload">
+
+        <p-treeTable [value]="files1">
+          <p-header>Basic</p-header>
+          <p-column field="name" header="Name"></p-column>
+          <p-column field="size" header="Size"></p-column>
+          <p-column field="type" header="Type"></p-column>
+        </p-treeTable>
+
+
+      </div>
+    </div>
+  </div>
+</div>

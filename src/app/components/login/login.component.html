@@ -1,0 +1,80 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DEEP.io</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Favicon with QHD -->
+  <link rel="icon" type="image/png" href="../../../assets/images/deepio_5.png" sizes="32x32"/>
+  <link rel="icon" type="image/png" href="../../../assets/images/deepio_5.png" sizes="16x16"/>
+
+  <link rel="icon" type="image/png" href="../../../assets/images/user_1.png" sizes="32x32"/>
+
+  <link rel="image" type="image/png" href="../../../assets/images/magenta.png" sizes="32x32"/>
+</head>
+<body class="flat-blue" class="ng-cloak">
+<div class="app-container home" background-color="white">
+
+  <div class="row content-container">
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <!-- anchor tag and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="color: #E20074"></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="">
+            <span><img src="../../../assets/images/deepio_6.png" height="53px" width="100px"></span>
+          </li>
+        </ul>
+      </div>
+    </nav><!-- close top nav -->
+  </div>
+  <div class="container" style="padding-top: 60px; background-color: white;">
+    <div class="ui-g-12">
+      <div class="ui-g-2"></div>
+      <div class="ui-g-8">
+        <alert></alert>
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12" [ngClass]="{'has-error': f.submitted && !username.valid}">
+              <div class="ui-grid-col-2"><label>Username</label></div>
+              <div class="ui-grid-col-8">
+                <input class="inputtext" type="text" name="username" [(ngModel)]="model.username" #username="ngModel"
+                       required/>
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <div class="ui-grid-col-2"><label>Password</label></div>
+              <div class="ui-grid-col-8">
+                <input class="inputtext" type="password" name="password" [(ngModel)]="model.password"
+                       #password="ngModel" required/>
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <div class="ui-grid-col-2"><label></label></div>
+              <div class="ui-grid-col-4">
+                <button [disabled]="loading" class="btn btn-primary">Login</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="ui-g-2"></div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

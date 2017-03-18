@@ -1,0 +1,415 @@
+/* You can add global styles to this file, and also import other style files
+@import "~bootstrap";
+@import "~font-awesome";*/
+
+
+
+.table-bordered {
+  border: 5px solid #ddd!important;
+  font-size: medium;
+  text-align: center;
+}
+
+body {
+  margin: 10px;
+  padding-top: 0px;
+  height: 100%;
+  position: relative;
+  font-size: 1.25em;
+}
+
+/* payload view text Area*/
+.col-md-12 .view-payload textarea {
+  width: 100%;
+  height: 400px;
+  background-color:white;
+  color:#A5BB1E;
+  border-color: transparent!important;
+  font:14px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+
+.ui-datatable table {
+  table-layout: auto!important;
+}
+
+.ui-datatable-resizable thead th, .ui-datatable-resizable tbody td, .ui-datatable-resizable tfoot td {
+  white-space: normal!important;
+}
+
+.ui-growl {
+  position: relative!important;
+  border-radius: 10px!important;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  width: 100%;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {}
+
+.inputtext {
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.ui-grid-col-12.payload-warn-alert {
+  /*background-color: #ffe5a2;*/
+  background-color: #ffffff;
+  border-color: #FABE28;
+  color: #85630f;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: medium;
+}
+
+.ui-dialog.ui-widget .ui-dialog-content {
+  padding: .1em 1.5em;
+}
+
+
+
+
+/* Side menu bar */
+/* Side menu bar */
+.app-container .content-container .side-menu {
+  overflow-y: hidden;
+  z-index: 100000;
+  position: fixed;
+  width: 60px;
+  height: 100%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.app-container .content-container .side-menu:hover {
+  overflow-y: auto;
+}
+
+.app-container .content-container .side-menu .navbar-header {
+  width: 100%;
+  border-bottom: 0px solid #e7e7e7;
+}
+
+.app-container .content-container .side-menu .navbar-header .navbar-brand {
+  width: 455px;
+  line-height: 60px;
+  height: 60px;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.app-container .content-container .side-menu .navbar-header .navbar-brand .icon {
+  width: 60px;
+  text-align: center;
+  display: inline-block;
+}
+
+.app-container .content-container .side-menu .navbar-header .navbar-brand .title {
+  margin-left: -10px;
+  display: none;
+}
+
+.app-container .content-container .side-menu .navbar-header .navbar-expand-toggle {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: 0px;
+  -moz-transition: all 0.25s linear;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  opacity: 0.75;
+}
+
+.app-container .content-container .side-menu .navbar {
+  border: none;
+  padding-left: 0px;
+}
+
+.app-container .content-container .side-menu .navbar-nav li {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.app-container .content-container .side-menu .navbar-nav li a {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 0 10px 0 10px;
+  height: 46px;
+  line-height: 46px;
+  display: block;
+  white-space: nowrap;
+}
+
+.app-container .content-container .side-menu .navbar-nav li a .icon {
+  margin-left: 0px;
+  width: 38px;
+  text-align: center;
+  font-size: 1.1em;
+  display: inline-block;
+}
+
+.app-container .content-container .side-menu .navbar-nav li a .title {
+  width: 0px;
+  white-space: nowrap;
+  padding-left: 6px;
+  display: none;
+}
+
+.app-container .content-container .side-menu .navbar-nav li.dropdown {
+  border: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.app-container .content-container .side-menu .navbar-nav li.dropdown ul li a {
+  height: 44px;
+  line-height: 44px;
+  vertical-align: middle;
+  padding: 0em 1.2em;
+}
+
+.app-container .content-container .side-menu .navbar-nav li.dropdown > a:after {
+  content: "";
+  position: absolute;
+  right: 1em;
+}
+
+.app-container .content-container .side-menu:hover {
+  width: 300px;
+}
+
+.app-container .content-container .side-menu:hover .navbar-header .navbar-brand .title {
+  display: inline-block;
+}
+
+.app-container .content-container .side-menu:hover .navbar-nav li a .title {
+  width: 192px;
+  display: inline-block;
+}
+
+.app-container .content-container .side-menu:hover .navbar-nav li.dropdown > a:after {
+  font-family: FontAwesome;
+  content: "\f107";
+  position: absolute;
+  right: 1em;
+}
+
+.app-container .content-container .side-menu:hover .panel-collapse.in {
+  display: block;
+}
+
+.app-container .content-container .side-body {
+  padding-top: 70px;
+}
+
+.app-container.expanded .content-container .side-menu .navbar-nav li.dropdown > a:after {
+  font-family: FontAwesome;
+  content: "\f107";
+  position: absolute;
+  right: 1em;
+}
+
+.flat-blue .side-menu {
+  background-color: #FFF;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.flat-blue .side-menu .navbar-header {
+  background-color: #FFF;
+  margin-bottom: 4px;
+}
+
+.flat-blue .side-menu .navbar-header .navbar-brand {
+  /*  // color: #2f2f30 !important;*/
+}
+
+.flat-blue .side-menu .navbar-nav {
+  width: 100%;
+}
+
+.flat-blue .side-menu .navbar {
+  background-color: #FFF;
+  border-bottom: 0px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.flat-blue .side-menu .navbar li > a {
+  color: #363c46;
+}
+
+.flat-blue .side-menu .navbar > li:hover > a {
+  background-color: #FA2A00;
+  color: #FFF;
+}
+
+.flat-blue .side-menu .navbar li.dropdown {
+  background-color: transparent;
+}
+
+.flat-blue .side-menu .navbar li.dropdown > .panel-collapse {
+  background-color: #E4E4E4;
+}
+
+.flat-blue .side-menu .navbar li.dropdown .panel-body {
+  padding: 0 7px;
+}
+
+.flat-blue .side-menu.sidebar-inverse {
+  background-color: black;
+  #background-color: #E20074;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.flat-blue .side-menu.sidebar-inverse .navbar {
+  background-color: black;
+  #background-color: #E20074;
+  border-bottom: 0px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.flat-blue .side-menu.sidebar-inverse .navbar li {
+  border-left: 0;
+}
+
+.flat-blue .side-menu.sidebar-inverse .navbar li > a {
+  color: #E20074;
+}
+
+.flat-blue .side-menu.sidebar-inverse .navbar > li:hover > a {
+  background-color: #FA2A00;
+  color: #FFF;
+}
+
+.flat-blue .side-menu.sidebar-inverse .navbar li.dropdown > .panel-collapse {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.flat-blue .side-menu.sidebar-inverse .navbar li.dropdown .panel-body {
+  padding: 0 7px;
+}
+
+/* top navbar bgcolor */
+.flat-blue .navbar.navbar-inverse > .container-fluid {
+  background-color: black;
+}
+
+body {
+  margin: 10px;
+  padding-top: 0px;
+  height: 100%;
+  position: relative;
+  font-size: 1.25em;
+}
+/* payload view text Area*/
+.col-md-12 .view-payload textarea {
+  width: 100%;
+  height: 400px;
+  background-color:white;
+  color:#A5BB1E;
+  border-color: transparent!important;
+  font:14px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+
+.ui-datatable table {
+  table-layout: auto!important;
+}
+
+.ui-datatable-resizable thead th, .ui-datatable-resizable tbody td, .ui-datatable-resizable tfoot td {
+  white-space: normal!important;
+}
+
+.ui-growl {
+  position: relative!important;
+  border-radius: 10px!important;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  width: 100%;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {}
+
+.inputtext {
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.ui-grid-col-12.payload-warn-alert {
+  /*background-color: #ffe5a2;*/
+  background-color: #ffffff;
+  border-color: #FABE28;
+  color: #85630f;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: medium;
+}
+
+.ui-dialog.ui-widget .ui-dialog-content {
+  padding: .1em 1.5em;
+}
+
+
+
+.success-alert {
+  /*background-color: #99e9d9;*/
+  background-color: #f1f1f1;
+  color: #006551;
+  border-color: #1ABC9C;
+  padding: 5px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: medium;
+}
+
+.info-alert {
+  /*background-color: #91d5fb;*/
+  background-color: #f1f1f1;
+  color: #09486b;
+  border-color: #3E8ACC;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: medium;
+}
+
+.warn-alert {
+  /*background-color: #ffe5a2;*/
+  background-color: #f1f1f1;
+  border-color: #FABE28;
+  color: #85630f;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: medium;
+}
+
+.error-alert {
+  /*background-color: #ffb8aa;*/
+  background-color: #f1f1f1;
+  border-color: #fb927d;
+  color: #7c1a06;
+  border-radius: 1px;
+  border-style: solid;
+  border-width: medium;
+}

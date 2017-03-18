@@ -1,0 +1,45 @@
+<div class="ui-g">
+
+  <div class="ui-g-12">
+    <div class="ui-grid-col-3">&nbsp;</div>
+    <div class="ui-grid-col-6">
+      <div class={{messageDetails.severity}} *ngIf="showMessage" >
+        <span>{{messageDetails.summary}}</span>
+        <span>{{messageDetails.detail}}</span></div>
+    </div>
+  </div>
+
+  <div class="ui-g-12">
+    <div class="ui-grid-col-3">&nbsp;</div>
+    <div class="ui-grid-col-6">
+      <form [formGroup]="payloadForm" novalidate>
+
+        <div class="ui-g-12">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12" [ngClass]="{'has-error':!payloadForm.controls['activity'].valid && payloadForm.controls['activity'].touched}">
+              <div class="ui-grid-col-2"><label>Event Name </label></div>
+              <div class="ui-grid-col-8">
+                <input class="inputtext" type="text" formControlName="activity" placeholder="Event Activity"/>
+                <div *ngIf="payloadForm.controls['activity'].hasError('required') && payloadForm.controls['activity'].pending" class="alert alert-danger">You must enter Event Name.</div>
+                <div *ngIf="payloadForm.controls['activity'].hasError('minlength') && payloadForm.controls['activity'].touched" class="alert alert-danger">Event name must be at least 3 characters long.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g-12" >
+          <p-fileUpload name="upload" url="{{uploadUrl}}" (onUpload)="onUpload($event)" (onError)="onError($event)"
+                    accept=".json,.text,.yml" maxFileSize="1000000" [disabled]="!payloadForm.valid">
+            <template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+              </ul>
+            </template>
+          </p-fileUpload>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

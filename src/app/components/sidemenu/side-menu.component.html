@@ -1,0 +1,69 @@
+<!-- Side menu starts here -->
+
+<div class="side-menu sidebar-inverse" background-color="black"
+     *ngIf="userRole=='user'? true : userRole=='admin'? true : userRole=='super-admin'">
+  <!--*ngIf="isLoggedIn">-->
+  <!--<div class="side-menu sidebar-inverse" background-color="black">-->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="side-menu-container" background-color="black">
+      <!-- User navbar -->
+      <div class="navbar-header" background-color="black">
+        <a style="background-color:black" class="navbar-brand" href="/">
+
+          <div class="icon"><img src="../../../assets/images/user_6.png" height="30px"></div>
+          <div class="title brand text-center" [(ngModel)]="currentUser" *ngIf="currentUser"></div>
+        </a>
+        <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+          <i class="fa fa-times icon"></i>
+        </button>
+      </div>
+
+      <!-- side bar menu list -->
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="/">
+            <span class="icon fa fa-home"></span><span class="title">Home</span>
+          </a>
+        </li>
+
+
+        <li class="panel panel-default dropdown">
+          <a data-toggle="collapse" href="#dropdown-1">
+            <span class="icon fa fa-list"></span><span class="title">Payload Operations</span>
+          </a>
+          <!-- Dropdown level 1 -->
+          <div id="dropdown-1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <ul class="nav navbar-nav">
+                <li><a routerLink="/viewPayloads"><i class="fa fa-fw fa fa-book"></i> View Payload</a>
+                </li>
+                <li *ngIf="userRole=='admin'? true : userRole=='super-admin'">
+                  <a routerLink="/uploadPayload"><i class="fa fa-fw fa fa-plus"></i>Upload Payload</a>
+                </li>
+                <li *ngIf="userRole=='super-admin'">
+                  <a routerLink="/viewQos"><i class="fa fa-fw fa fa-plus"></i>View QOS Properties</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+
+        <li *ngIf="userRole=='future'? true : false">
+          <a routerLink="hierarchicalMap">
+            <span class="icon fa fa-sitemap"></span><span class="title"> Hierarchical View</span>
+          </a>
+        </li>
+
+
+        <li >
+          <a href="/login" (click)="logout()">
+            <span class="icon fa fa-sign-out"></span><span class="title">Logout</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>
+
